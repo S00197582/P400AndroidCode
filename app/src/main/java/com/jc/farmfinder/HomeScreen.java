@@ -95,21 +95,25 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {switchActivitiesRepDetails();}
         });
-
-
-
     }
+
+
+
+
+
+
+
+
+
+    //methods
 
     private void getFences()
     {
-
-
         RequestQueue queue = Volley.newRequestQueue(this);
         Request<String> mStringRequest;
         //TextView Displaydata = findViewById(R.id.GetDetails);
 
         String url = "https://api.tomtom.com/geofencing/1/projects/2dfb6001-ab98-431e-85b3-a498336de91b/fences?key=M9ylDwqdBFDHX5EtfVDKFVT8EZDKbRn0";
-
 
         //String Request initialized
         mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -132,6 +136,12 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
+
+
+
+
+
+
     private void addNewFence()
     {
         String UserAdminID = "8V4fHSSXKU2DzYIFpkhgyh7SyXHCUqIdmPWYtEZis1Ik8S6H";
@@ -150,31 +160,6 @@ public class HomeScreen extends AppCompatActivity {
             String URL = "https://api.tomtom.com/geofencing/1/projects/"+ProjectID+"/fence?key=M9ylDwqdBFDHX5EtfVDKFVT8EZDKbRn0&adminKey=" + UserAdminID;
 
             Log.d("TAG", URL);
-
-
-            //            {
-            //  "name": "DemoFence3",
-            //  "type": "Feature",
-            //  "geometry": {
-            //    "radius": 75,
-            //    "type": "Point",
-            //    "shapeType": "Circle",
-            //    "coordinates": [-67.137343, 45.137451]
-            //  }
-//            }
-
-
-//            {
-//                "name": "DemoFence3",
-//                "type": "Feature",
-//                "geometry": {
-//                  "radius": 75,
-//                  "type": "Point",
-//                  "shapeType": "Circle",
-//                  "coordinates": [-67.137343, 45.137451]
-//                }
-//            }
-
 
 
         coords.put(-67.137343);
@@ -244,13 +229,11 @@ public class HomeScreen extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
 
 
-    private void RegisterUser() {
+    private void RegisterAdminkey() {
         RequestQueue queue = Volley.newRequestQueue(this);
         //EditText responseBox = findViewById(R.id.editTextTextPersonName4);
 

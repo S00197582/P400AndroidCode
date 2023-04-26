@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         Button loginButton= (Button)findViewById(R.id.LoginBtn);
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -26,11 +25,49 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Button anonReportButton= (Button)findViewById(R.id.AnonymousReportBtn);
+        anonReportButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                goToReport();
+            }
+        });
+
+
+        Button signupButton= (Button)findViewById(R.id.signupBtn);
+        signupButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                goToSignup();
+            }
+        });
 
     }
+
 
     private void switchActivities() {
-        Intent goToHome = new Intent(this, HomeScreen.class);
-        startActivity(goToHome);
+
+        Cognito cog = new Cognito(this);
+
+        //Log in the user using the details provided. Do not progress if they are incorrect
+
+        EditText emailTbx = findViewById(R.id.EmailTbx);
+        EditText passwordTbx = findViewById(R.id.passwordTbx);
+
+        String email = emailTbx.getText().toString();
+        String password = passwordTbx.getText().toString();
+
+        cog.userLogin(email, password);
     }
+
+    private void goToSignup() {
+        Intent goToSignup = new Intent(this, LoginScreen.class);
+        startActivity(goToSignup);
+    }
+
+    private void goToReport() {
+        Intent goToReport = new Intent(this, ReportScreen.class);
+        startActivity(goToReport);
+    }
+
 }
